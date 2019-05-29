@@ -1,4 +1,5 @@
 out*
+.idea/*
 jogl*
 ex5.iml
 Implemented
