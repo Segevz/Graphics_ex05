@@ -38,7 +38,7 @@ public class Viewer implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		// TODO: This method is already implemented. But you should understand it very
-		// will.
+		// well.
 		// When this method is invoked, the model is basically render. Follow the
 		// different calls
 		// inside this method, since some of the methods (i.e setUpCamera), change the
