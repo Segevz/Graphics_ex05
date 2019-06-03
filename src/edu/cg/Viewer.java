@@ -220,17 +220,24 @@ public class Viewer implements GLEventListener {
 		boolean flag = gl.glIsEnabled(GL2.GL_LIGHTING);
 		gl.glDisable(GL2.GL_LIGHTING);
 		gl.glBegin(GL2.GL_LINES);
-		gl.glColor3d(1, 0, 0);
-		gl.glVertex3d(0, 0, 0);
-		gl.glVertex3d(1, 0, 0);
+		for (int i = 0; i < 3; i++) {
 
-		gl.glColor3d(0, 1, 0);
-		gl.glVertex3d(0, 0, 0);
-		gl.glVertex3d(0, 1, 0);
+			gl.glColor3d(i == 0 ? 1 : 0, i == 1 ? 1 : 0, i == 2 ? 1 : 0);
+			gl.glVertex3d(0, 0, 0);
+			gl.glVertex3d(i == 0 ? 1 : 0, i == 1 ? 1 : 0, i == 2 ? 1 : 0);
+		}
 
-		gl.glColor3d(0, 0, 1);
-		gl.glVertex3d(0, 0, 0);
-		gl.glVertex3d(0, 0, 1);
+//		gl.glColor3d(1, 0, 0);
+//		gl.glVertex3d(0, 0, 0);
+//		gl.glVertex3d(1, 0, 0);
+//
+//		gl.glColor3d(0, 1, 0);
+//		gl.glVertex3d(0, 0, 0);
+//		gl.glVertex3d(0, 1, 0);
+//
+//		gl.glColor3d(0, 0, 1);
+//		gl.glVertex3d(0, 0, 0);
+//		gl.glVertex3d(0, 0, 1);
 
 		gl.glEnd();
 		if (flag)
