@@ -18,17 +18,17 @@ public class F1Car implements IRenderable {
 		Back back = new Back();
 		Center center = new Center();
 		Front front = new Front();
-
-		// Render back
-		gl.glTranslated((-1) * (Specification.B_LENGTH + Specification.C_BASE_LENGTH) / 2, 0, 0);
-		back.render(gl);
 		
-		// Render center
+		// Render center of car
 		gl.glPushMatrix();
 		center.render(gl);
 
+		// Render back of car
+		gl.glTranslated((-1) * (Specification.B_LENGTH + Specification.C_BASE_LENGTH) / 2, 0, 0);
+		back.render(gl);
+		
 
-		// render front
+		// Render front of car
 		gl.glTranslated((Specification.F_FRONT_LENGTH + Specification.B_LENGTH) / 2 + Specification.C_BASE_LENGTH, 0, 0);
 		front.render(gl);
 

@@ -21,24 +21,30 @@ public class Center implements IRenderable {
 	public void render(GL2 gl) {
 		//Render the center of the car.
 		
+		// Set color blackMetal for base and center of car
 		Materials.SetBlackMetalMaterial(gl);
 				
-		// Render base and chair
+		// Render base 
 		gl.glPushMatrix();
 		bodyBase.render(gl);
 		gl.glPopMatrix();
+		
+		// Render chair
 		gl.glPushMatrix();
 		gl.glTranslated((Specification.C_BACK_LENGTH - Specification.C_BASE_LENGTH) / 2 + Specification.C_FRONT_LENGTH, Specification.C_BASE_HEIGHT, 0);
 		backSeatBox.render(gl);
 		gl.glPopMatrix();
 
+		// Set color redMetal for front and rear of car
 		Materials.SetRedMetalMaterial(gl);
 		
 		// Render front
+		// Left
 		gl.glPushMatrix();
 		gl.glTranslated((Specification.C_FRONT_LENGTH - Specification.C_BASE_LENGTH) / 2, Specification.C_BASE_HEIGHT, 0);
 		gl.glRotated(180, 0, 1, 0);
 		frontBox.render(gl);
+		// Right
 		gl.glPopMatrix();
 		gl.glPushMatrix();
 		gl.glTranslated((Specification.C_BASE_LENGTH - Specification.C_FRONT_LENGTH) / 2, Specification.C_BASE_HEIGHT, 0);
@@ -46,11 +52,13 @@ public class Center implements IRenderable {
 		gl.glPopMatrix();
 		
 		// Render sides
+		// Front
 		gl.glPushMatrix();
 		gl.glTranslated(0, Specification.C_BASE_HEIGHT, (Specification.C_BASE_DEPTH - Specification.C_SIDE_LENGTH) / 2);
 		gl.glRotated(90, 0, 1, 0);
 		sideBox.render(gl);
 		gl.glPopMatrix();
+		// Rear
 		gl.glPushMatrix();
 		gl.glTranslated(0, Specification.C_BASE_HEIGHT, (Specification.C_SIDE_LENGTH - Specification.C_BASE_DEPTH) / 2);
 		gl.glRotated(-90, 0, 1, 0);
