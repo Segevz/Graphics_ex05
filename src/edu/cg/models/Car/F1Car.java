@@ -15,20 +15,18 @@ public class F1Car implements IRenderable {
 		// Render the whole car. 
 		// Here You should only render the three parts: back, center and front.
 		
-		Back back = new Back();
-		Center center = new Center();
-		Front front = new Front();
-		
 		// Render center of car
+		Center center = new Center();
 		gl.glPushMatrix();
 		center.render(gl);
 
 		// Render back of car
+		Back back = new Back();
 		gl.glTranslated((-1) * (Specification.B_LENGTH + Specification.C_BASE_LENGTH) / 2, 0, 0);
 		back.render(gl);
 		
-
 		// Render front of car
+		Front front = new Front();
 		gl.glTranslated((Specification.F_FRONT_LENGTH + Specification.B_LENGTH) / 2 + Specification.C_BASE_LENGTH, 0, 0);
 		front.render(gl);
 

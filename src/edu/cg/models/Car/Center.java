@@ -21,7 +21,7 @@ public class Center implements IRenderable {
 	public void render(GL2 gl) {
 		//Render the center of the car.
 		
-		// Set color blackMetal for base and center of car
+		// Set color blackMetal for base and back seat of car
 		Materials.SetBlackMetalMaterial(gl);
 				
 		// Render base 
@@ -29,7 +29,7 @@ public class Center implements IRenderable {
 		bodyBase.render(gl);
 		gl.glPopMatrix();
 		
-		// Render chair
+		// Render back seat
 		gl.glPushMatrix();
 		gl.glTranslated((Specification.C_BACK_LENGTH - Specification.C_BASE_LENGTH) / 2 + Specification.C_FRONT_LENGTH, Specification.C_BASE_HEIGHT, 0);
 		backSeatBox.render(gl);
