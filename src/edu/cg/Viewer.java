@@ -100,9 +100,44 @@ public class Viewer implements GLEventListener {
 		//
 		// We should have already changed the point of view, now set these to null
 		// so we don't change it again on the next redraw.
-		mouseFrom = null;
-		mouseTo = null;
+		
+		gl.glLoadIdentity();
+        if ((mouseFrom != null) && (mouseTo != null)) {
+            // Calculate previous and current vector
+            
+            Vec curVector = calcVector(mouseTo);
+            Vec prevVector = calcVector(mouseFrom);
+
+            Vec axis = prevVector.cross(curVector).normalize();
+
+            if (axis.isFinite()) {
+                double angle = Math.toDegrees(Math.acos(prevVector.dot(curVector)));
+                angle = Double.isInfinite(angle)? 0 : angle;
+                gl.glRotated(angle, axis.x, axis.y, axis.z);
+            }
+        }
+
+        gl.glMultMatrixd(rotationMatrix, 0);
+		gl.glGetDoublev(GL2.GL_MODELVIEW_MATRIX, rotationMatrix, 0);
+		
+		gl.glLoadIdentity();
+		gl.glTranslated(0, 0, -1.2);
+		gl.glTranslated(0,0,-zoom);
+		gl.glMultMatrixd(rotationMatrix, 0);
+
+        mouseFrom = null;
+        mouseTo = null;
+
 	}
+	
+	private Vec calcVector(Point point) {
+    	double x = (2.0 * point.x / canvasWidth) - 1.0;
+        double y = 1.0 - ((2.0 * point.y) / canvasHeight);
+        double z = 2 - Math.pow(x, 2) - Math.pow(y, 2);
+        z = z >= 0 ? Math.sqrt(z) : 0;
+        
+        return new Vec(x, y, z).normalize();
+    }
 
 	private void setupLights(GL2 gl) {
 		// For this exercise we don't require lighting.
