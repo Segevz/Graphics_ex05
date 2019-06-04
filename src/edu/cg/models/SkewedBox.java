@@ -25,50 +25,50 @@ public class SkewedBox implements IRenderable {
 	public void render(GL2 gl) {
 		gl.glNormal3d(1.0, 0.0, 0.0);
 		gl.glBegin(7);
-		gl.glVertex3d(this.length / 2.0, 0.0, this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, 0.0, -this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, -this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, this.depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, -depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, -depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, depth2 / 2.0);
 		gl.glEnd();
 
 		gl.glNormal3d(-1.0, 0.0, 0.0);
 		gl.glBegin(7);
-		gl.glVertex3d(-this.length / 2.0, 0.0, -this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, 0.0, this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, this.height1, this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, this.height1, -this.depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, -depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, -depth1 / 2.0);
 		gl.glEnd();
 
 		gl.glNormal3d(0.0, 1.0, 0.0);
 		gl.glBegin(7);
-		gl.glVertex3d(-this.length / 2.0, this.height1, this.depth1 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, -this.depth2 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, this.height1, -this.depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, depth1 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, -depth2 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, -depth1 / 2.0);
 		gl.glEnd();
 
 		gl.glNormal3d(0.0, -1.0, 0.0);
 		gl.glBegin(7);
-		gl.glVertex3d(-this.length / 2.0, 0.0, this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, 0.0, -this.depth1 / 2.0);
-		gl.glVertex3d(this.length / 2.0, 0.0, -this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, 0.0, this.depth2 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, -depth1 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, -depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, depth2 / 2.0);
 		gl.glEnd();
 
 		gl.glNormal3d(0.0, 0.0, 1.0);
 		gl.glBegin(7);
-		gl.glVertex3d(-this.length / 2.0, this.height1, this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, 0.0, this.depth1 / 2.0);
-		gl.glVertex3d(this.length / 2.0, 0.0, this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, this.depth2 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, depth1 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, depth2 / 2.0);
 		gl.glEnd();
 
 		gl.glNormal3d(0.0, 0.0, -1.0);
 		gl.glBegin(7);
-		gl.glVertex3d(-this.length / 2.0, 0.0, -this.depth1 / 2.0);
-		gl.glVertex3d(-this.length / 2.0, this.height1, -this.depth1 / 2.0);
-		gl.glVertex3d(this.length / 2.0, this.height2, -this.depth2 / 2.0);
-		gl.glVertex3d(this.length / 2.0, 0.0, -this.depth2 / 2.0);
+		gl.glVertex3d(-length / 2.0, 0.0, -depth1 / 2.0);
+		gl.glVertex3d(-length / 2.0, height1, -depth1 / 2.0);
+		gl.glVertex3d(length / 2.0, height2, -depth2 / 2.0);
+		gl.glVertex3d(length / 2.0, 0.0, -depth2 / 2.0);
 		gl.glEnd();
 	}
 

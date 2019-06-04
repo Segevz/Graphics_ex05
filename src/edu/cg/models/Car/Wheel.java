@@ -13,10 +13,12 @@ public class Wheel implements IRenderable {
 		GLU glu = new GLU();
 		GLUquadric quad = glu.gluNewQuadric();
 		Materials.setMaterialTire(gl);
+		// Cylinder 
 		gl.glPushMatrix();
 		gl.glTranslated(0.0, 0.0, -Specification.TIRE_DEPTH/2.0);
 		glu.gluCylinder(quad, Specification.TIRE_RADIUS, Specification.TIRE_RADIUS, Specification.TIRE_DEPTH, 40, 1);
 		gl.glRotated(180.0, 1.0, 0.0, 0.0);
+		// Outer and Inner Disk
 		glu.gluDisk(quad, 0.8*Specification.TIRE_RADIUS, Specification.TIRE_RADIUS, 40, 1);
 		gl.glRotated(180.0, 1.0, 0.0, 0.0);
 		gl.glTranslated(0.0, 0.0, Specification.TIRE_DEPTH);
@@ -26,6 +28,7 @@ public class Wheel implements IRenderable {
 		gl.glTranslated(0.0, 0.0, -Specification.TIRE_DEPTH);
 		gl.glRotated(180.0, 1.0, 0.0, 0.0);
 		glu.gluDisk(quad, 0.0, 0.8*Specification.TIRE_RADIUS, 40, 1);
+		
 		gl.glPopMatrix();
 		glu.gluDeleteQuadric(quad);
 	}

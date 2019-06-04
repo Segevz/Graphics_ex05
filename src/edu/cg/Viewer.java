@@ -4,8 +4,6 @@ import java.awt.Component;
 import java.awt.Point;
 
 import com.jogamp.opengl.*;
-import com.jogamp.opengl.glu.GLU;
-import com.jogamp.opengl.glu.GLUquadric;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import edu.cg.algebra.Vec;
@@ -110,12 +108,12 @@ public class Viewer implements GLEventListener {
             Vec curVector = calcVector(mouseTo);
             Vec prevVector = calcVector(mouseFrom);
 
-            Vec newAxis = prevVector.cross(curVector).normalize();
+            Vec rotationAxis = prevVector.cross(curVector).normalize();
 
-            if (newAxis.isFinite()) {
+            if (rotationAxis.isFinite()) {
                 double angle = Math.toDegrees(Math.acos(prevVector.dot(curVector)));
                 angle = Double.isInfinite(angle)? 0 : angle;
-                gl.glRotated(angle, newAxis.x, newAxis.y, newAxis.z);
+                gl.glRotated(angle, rotationAxis.x, rotationAxis.y, rotationAxis.z);
             }
         }
         gl.glMultMatrixd(rotationMatrix, 0);
@@ -277,18 +275,6 @@ public class Viewer implements GLEventListener {
 			gl.glVertex3d(i == 0 ? 1 : 0, i == 1 ? 1 : 0, i == 2 ? 1 : 0);
 		}
 
-//		gl.glColor3d(1, 0, 0);
-//		gl.glVertex3d(0, 0, 0);
-//		gl.glVertex3d(1, 0, 0);
-//
-//		gl.glColor3d(0, 1, 0);
-//		gl.glVertex3d(0, 0, 0);
-//		gl.glVertex3d(0, 1, 0);
-//
-//		gl.glColor3d(0, 0, 1);
-//		gl.glVertex3d(0, 0, 0);
-//		gl.glVertex3d(0, 0, 1);
-
 		gl.glEnd();
 		if (flag)
 			gl.glEnable(GL2.GL_LIGHTING);
@@ -298,5 +284,4 @@ public class Viewer implements GLEventListener {
 		this.model = model;
 		isModelInitialized = false;
 	}
-
 }
