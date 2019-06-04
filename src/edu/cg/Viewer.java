@@ -101,30 +101,34 @@ public class Viewer implements GLEventListener {
 		// We should have already changed the point of view, now set these to null
 		// so we don't change it again on the next redraw.
 		
+		// (Step 1)
+		
 		gl.glLoadIdentity();
         if ((mouseFrom != null) && (mouseTo != null)) {
-            // Calculate previous and current vector
             
+        	// Calculate previous and current vector
             Vec curVector = calcVector(mouseTo);
             Vec prevVector = calcVector(mouseFrom);
 
-            Vec axis = prevVector.cross(curVector).normalize();
+            Vec newAxis = prevVector.cross(curVector).normalize();
 
-            if (axis.isFinite()) {
+            if (newAxis.isFinite()) {
                 double angle = Math.toDegrees(Math.acos(prevVector.dot(curVector)));
                 angle = Double.isInfinite(angle)? 0 : angle;
-                gl.glRotated(angle, axis.x, axis.y, axis.z);
+                gl.glRotated(angle, newAxis.x, newAxis.y, newAxis.z);
             }
         }
-
         gl.glMultMatrixd(rotationMatrix, 0);
 		gl.glGetDoublev(GL2.GL_MODELVIEW_MATRIX, rotationMatrix, 0);
-		
+
+		// (Step 2 & 3)
 		gl.glLoadIdentity();
 		gl.glTranslated(0, 0, -1.2);
 		gl.glTranslated(0,0,-zoom);
 		gl.glMultMatrixd(rotationMatrix, 0);
 
+		// We should have already changed the point of view, now set these to null
+		// so we don't change it again on the next redraw.
         mouseFrom = null;
         mouseTo = null;
 
