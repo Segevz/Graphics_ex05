@@ -141,7 +141,18 @@ public class Viewer implements GLEventListener {
 
 	@Override
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-		// TODO: Perform the perspective projection here as we learned in class.
+		// Perform the perspective projection here as we learned in class.
+	
+		GL2 gl = drawable.getGL().getGL2();
+		canvasWidth = width;
+		canvasHeight = height;
+		
+		gl.glMatrixMode(GL2.GL_PROJECTION);
+		gl.glLoadIdentity();
+		double widthD = width;
+		double heightD = height;
+		gl.glFrustum(-.1,0.1,-.1 * heightD / widthD,.1 * heightD / widthD,.1,1000);
+		
 	}
 
 	/**
